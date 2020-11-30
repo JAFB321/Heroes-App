@@ -6,6 +6,7 @@ import { types } from '../../types/types';
 export const LoginScreen = ({ history }) => {
     
     const {user, dispatch} = useContext(AuthContext);
+    const lastPath = localStorage.getItem('lastPath') || '/';
 
     const handleLogin = () => {
         const action = {
@@ -15,8 +16,8 @@ export const LoginScreen = ({ history }) => {
             }
         }
         dispatch(action);
+        history.replace(lastPath); 
         // history.push('/'); // Navega a otra ruta 
-        history.replace('/'); // Reemplaza en la historia la ruta actual (lo que te reedirecciona a la nueva ruta y reemplaza la ruta anterior como si no se hubiera accedido a ella)
     }
 
     return (
